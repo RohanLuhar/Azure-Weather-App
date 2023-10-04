@@ -76,12 +76,9 @@ label {
     background-color: rgb(113, 148, 161, 0.25);
 }
 
-body{
-    background-color: rgb(113, 148, 161);
-}
-
 body {
     background-image: url('bg.jpg');
+    background-color: rgb(113, 148, 161);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
