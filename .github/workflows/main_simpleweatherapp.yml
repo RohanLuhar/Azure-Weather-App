@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'SimpleWeatherApp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_733DE171337F4F7FB7F6577676F8FF34 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2BC521F1F2A74C019ACA29E2C1CFD0C6 }}
