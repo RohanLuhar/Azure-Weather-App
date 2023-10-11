@@ -25,17 +25,26 @@ Steps involved:
 11. Sync all your file in a separate Github repository.
 
 Steps to deploy on Azure:
-1. Create an App Service in your Azure and choose free plan.
-   This will get you a default microsoft website.
-2. Now, go to Configuration > General Settings, and save it after writing the following 'Startup Command':
+1. Create a Resource Group.
+   ![Screenshot 2023-10-11 150733](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/04ee3cbf-d042-45a6-b5a7-0857b68c9a9f)
+   
+2. Create a Web App Service in your Azure.
+   Enter a unique name for your app service and linux plan.
+   Select Python 3.11.1 as runtime stack, Central India as region, and Free F1 as pricing plan.
+   Hit Review + Create.
+   It will take under less than 1 minute to deploy your website. Click on 'Go to resource'.
+   ![Screenshot 2023-10-11 151421](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/b32f69de-9aee-483d-93a0-5af6144b5063)
+![Screenshot 2023-10-11 151325](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/cd3e4b9e-3c71-4820-b62b-ecf17d6f28b9)
+   
+4. Now, go to Configuration > General Settings, and save it after writing the following 'Startup Command':
    gunicorn --bind=0.0.0.0 --timeout 600 startup:app
    ![Screenshot 2023-10-11 150137](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/9c8494c0-9e83-4636-96aa-97b295ba9aeb)
-3. Go to Deployment Center.
+   
+5. Go to Deployment Center.
    Signin into your Github there, choose repository and save it.
-4. You can finally browse your webapp from the mentioned url in Overview section.
-
-
-  
+   
+6. You can finally browse your webapp from the mentioned url in Overview section.
+![Screenshot 2023-10-11 150103](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/08b1d00c-71cc-4a85-8da7-ac18a93abaaf)
 
 
 Requirements:
