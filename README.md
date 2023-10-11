@@ -97,3 +97,4 @@ References:
 1. https://flask.palletsprojects.com/en/3.0.x/
 2. https://learn.microsoft.com/en-us/azure/ai-services/translator/
 3. https://openweathermap.org/
+4. https://portal.azure.com/
