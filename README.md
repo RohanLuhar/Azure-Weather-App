@@ -24,7 +24,10 @@ Steps involved:
     run flask
 11. Sync all your file in a separate Github repository.
 
-Steps to deploy on Azure:
+Steps to deploy Translator API on Azure:
+1. 
+
+Steps to deploy WebApp on Azure:
 1. Create a Resource Group.
    ![Screenshot 2023-10-11 150733](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/04ee3cbf-d042-45a6-b5a7-0857b68c9a9f)
    
@@ -36,15 +39,16 @@ Steps to deploy on Azure:
 ![Screenshot 2023-10-11 151325](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/cd3e4b9e-3c71-4820-b62b-ecf17d6f28b9)
    ![Screenshot 2023-10-11 151421](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/b32f69de-9aee-483d-93a0-5af6144b5063)
    
-4. Now, go to Configuration > General Settings, and save it after writing the following 'Startup Command':
+3. Now, go to Configuration > General Settings, and save it after writing the following 'Startup Command':
    gunicorn --bind=0.0.0.0 --timeout 600 startup:app
    ![Screenshot 2023-10-11 150137](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/9c8494c0-9e83-4636-96aa-97b295ba9aeb)
    
-5. Go to Deployment Center.
+4. Go to Deployment Center.
    Signin into your Github there, choose repository, choose branch and save it.
+   ![Screenshot 2023-10-11 152030](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/3855db00-85ee-44af-bd65-fa12f2230352)
+
    
-   
-7. You can finally browse your webapp from the mentioned url in Overview section.
+5. You can finally browse your webapp from the mentioned url in Overview section.
 ![Screenshot 2023-10-11 150103](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/08b1d00c-71cc-4a85-8da7-ac18a93abaaf)
 
 
