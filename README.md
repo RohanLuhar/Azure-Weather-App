@@ -29,13 +29,13 @@ Steps to deploy on Azure:
    This will get you a default microsoft website.
 2. Now, go to Configuration > General Settings, and save it after writing the following 'Startup Command':
    gunicorn --bind=0.0.0.0 --timeout 600 startup:app
-
+   ![Screenshot 2023-10-11 150137](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/9c8494c0-9e83-4636-96aa-97b295ba9aeb)
 3. Go to Deployment Center.
    Signin into your Github there, choose repository and save it.
 4. You can finally browse your webapp from the mentioned url in Overview section.
 
 
-  ![Screenshot 2023-10-11 150137](https://github.com/RohanLuhar/Azure-Weather-App/assets/99538858/9c8494c0-9e83-4636-96aa-97b295ba9aeb)
+  
 
 
 Requirements:
