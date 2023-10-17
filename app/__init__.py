@@ -28,6 +28,9 @@ def index():
     if request.method == 'POST':
         city_name = request.form['name']
 
+        if(city_name == None):
+            null_search()
+
         url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&APPID=3c6d6137fff8654d1f2f4cdff76b0698'
         response = requests.get(url.format(city_name)).json()
         
@@ -69,6 +72,12 @@ def index():
     
     else:
         return render_template('index.html')
+    
+
+def null_search():
+    msg = "Please enter valid location"
+    return render_template('index.html', msg=msg)
+
 
 if __name__ == '__main__':
     app.run(debug=False,host='0.0.0.0')
