@@ -25,53 +25,58 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['GET','POST'])
 def index():
-    if request.method == 'POST':
-        city_name = request.form['name']
+    try:
+        if request.method == 'POST':
+            city_name = request.form['name']
+            print(type(city_name))
+            if (len(city_name) == 0):
+                return render_template('invalid.html')
+            else:
+                url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&APPID=3c6d6137fff8654d1f2f4cdff76b0698'
+                response = requests.get(url.format(city_name)).json()
+                
+                temp = response['main']['temp']
+                weather = response['weather'][0]['description']
+                min_temp = response['main']['temp_min']
+                max_temp = response['main']['temp_max']
+                icon = response['weather'][0]['icon']
+                print(city_name,temp,weather,min_temp,max_temp,icon)
+                
+                body = [
+                    {'text': temp},
+                    {'text': weather},
+                    {'text': min_temp},
+                    {'text': max_temp},
+                    {'text': city_name},
+                ]
 
-        if(city_name == None):
-            null_search()
+                requestt = requests.post(constructed_url, params=params, headers=headers, json=body)
+                response = requestt.json()
+                temp_hindi = response[0]['translations'][0]['text']
+                weather_hindi = response[1]['translations'][0]['text']
+                min_temp_hindi = response[2]['translations'][0]['text']
+                max_temp_hindi = response[3]['translations'][0]['text']    
+                city_name_hindi = response[4]['translations'][0]['text']
 
-        url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&APPID=3c6d6137fff8654d1f2f4cdff76b0698'
-        response = requests.get(url.format(city_name)).json()
+                return render_template('index.html',
+                                    temp = temp,
+                                    temp_hindi=temp_hindi,
+                                    weather=weather.title(),
+                                    weather_hindi=weather_hindi,
+                                    min_temp=min_temp,
+                                    min_temp_hindi=min_temp_hindi,
+                                    max_temp=max_temp,
+                                    max_temp_hindi=max_temp_hindi,
+                                    icon=icon,
+                                    city_name=city_name.upper(),
+                                    city_name_hindi=city_name_hindi) 
         
-        temp = response['main']['temp']
-        weather = response['weather'][0]['description']
-        min_temp = response['main']['temp_min']
-        max_temp = response['main']['temp_max']
-        icon = response['weather'][0]['icon']
-        print(city_name,temp,weather,min_temp,max_temp,icon)
-        
-        body = [
-            {'text': temp},
-            {'text': weather},
-            {'text': min_temp},
-            {'text': max_temp},
-            {'text': city_name},
-        ]
-
-        requestt = requests.post(constructed_url, params=params, headers=headers, json=body)
-        response = requestt.json()
-        temp_hindi = response[0]['translations'][0]['text']
-        weather_hindi = response[1]['translations'][0]['text']
-        min_temp_hindi = response[2]['translations'][0]['text']
-        max_temp_hindi = response[3]['translations'][0]['text']    
-        city_name_hindi = response[4]['translations'][0]['text']
-
-        return render_template('index.html',
-                               temp = temp,
-                               temp_hindi=temp_hindi,
-                               weather=weather.title(),
-                               weather_hindi=weather_hindi,
-                               min_temp=min_temp,
-                               min_temp_hindi=min_temp_hindi,
-                               max_temp=max_temp,
-                               max_temp_hindi=max_temp_hindi,
-                               icon=icon,
-                               city_name=city_name.upper(),
-                               city_name_hindi=city_name_hindi) 
+        else:
+            return render_template('index.html')
     
-    else:
-        return render_template('index.html')
+    except:
+        return render_template('invalid.html')
+    
     
 
 def null_search():
